@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="点击蓝色按钮，让页面变成蓝色。" />
+    <title>蓝色按钮</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Ccircle cx='16' cy='16' r='6' fill='white'/%3E%3C/svg%3E" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: #f7f9fc;
+        transition: background-color 500ms ease;
+      }
+
+      body.is-blue { background: #2563eb; }
+
+      button {
+        min-width: 10rem;
+        min-height: 3.5rem;
+        padding: 0.9rem 1.75rem;
+        border: 2px solid #1d4ed8;
+        border-radius: 999px;
+        background: #2563eb;
+        color: #fff;
+        font: inherit;
+        font-size: 1.125rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        box-shadow: 0 12px 28px rgb(37 99 235 / 28%);
+        transition: transform 160ms ease, box-shadow 160ms ease, background-color 300ms ease, color 300ms ease;
+      }
+
+      button:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgb(37 99 235 / 34%); }
+      button:active { transform: translateY(0); }
+      button:focus-visible { outline: 4px solid #facc15; outline-offset: 4px; }
+
+      body.is-blue button {
+        border-color: #fff;
+        background: #fff;
+        color: #1d4ed8;
+        box-shadow: 0 12px 28px rgb(15 23 42 / 22%);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        body, button { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <button id="blue-button" type="button" aria-pressed="false">蓝色</button>
+    </main>
+    <script>
+      const blueButton = document.querySelector('#blue-button');
+      blueButton.addEventListener('click', () => {
+        document.body.classList.add('is-blue');
+        blueButton.setAttribute('aria-pressed', 'true');
+      });
+    </script>
+  </body>
+</html>
